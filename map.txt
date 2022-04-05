@@ -1,0 +1,57 @@
+
+let rec map(f, xs) =
+  match xs with
+  | [] -> []
+  | x::xs' -> (f, x) :: (map(f, xs'));;
+
+let povecaj a = a + 1 
+let paran b = b mod 2 = 0
+let lista = [1;2;10]
+let stringovi = ["abc"; "a"]            
+            
+let rez = map(String.length , stringovi);;
+
+let rec filter(f, xs) =
+  match xs with
+  | [] -> []
+  | x :: xs' -> if f x 
+      then x::filter(f, xs')
+      else filter(f, xs');;
+
+
+let samoParni1 xs = 
+  let is_even x = x mod 2 = 0 in
+  filter(is_even, xs);;
+
+let samoParni2 xs = 
+  filter((let is_even x = x mod 2 = 0 in is_even), xs);;
+
+(* sa anonimnim nema rekurzivnog poziva *)
+let samoParni3 xs = 
+  filter((fun x -> x mod 2 = 0), xs);;
+
+let multByN n = 
+  fun x -> n * x;;
+
+let foo = multByN 5;; 
+(*foo 4;; *)
+
+
+
+
+
+
+let doubleOrTriple f = 
+  if f 7
+  then fun x -> 2 * x
+  else fun x -> 3 * x
+
+let fja = doubleOrTriple paran;; 
+fja 6;;
+
+
+
+
+
+
+
