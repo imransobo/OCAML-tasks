@@ -1,0 +1,39 @@
+let suma_parova(pr1, pr2) = 
+  (fst pr1 + fst pr2, snd pr1 + snd pr2);;
+
+let zamijeni (pr : int * int) = (snd pr, fst pr);;
+
+let sort_pair(pr : int * int) =
+  if fst pr < snd pr then pr
+  else zamijeni pr;; 
+
+(* za trojke *)
+let fst3 (x,_,_) = x 
+let snd3 (_,x,_) = x 
+let thd3 (_,_,x) = x
+
+  
+let rec suma_liste(l) =
+  if l = [] then 0
+  else List.hd l + suma_liste(List.tl l);; 
+
+let rec lenList(l) = 
+  if l = [] then 0
+  else 1 + lenList(List.tl l);;
+
+let rec sum_lista_parova(l: (int*int) list) = 
+  if l = [] then 0
+  else ( fst(List.hd l) + snd(List.hd l) + sum_lista_parova(List.tl l) );; 
+        
+let rec vratiPrveElemente(l: ('a * 'b) list) = 
+  if l = [] then []
+  else ( fst(List.hd l) :: vratiPrveElemente(List.tl l) );;
+
+let rec vratiDrugeElemente(l: ('a * 'b) list) = 
+  if l = [] then []
+  else ( snd(List.hd l) :: vratiDrugeElemente(List.tl l) );;
+
+
+let sum_lista_parova2(l: (int * int) list) = 
+  suma_liste(vratiPrveElemente l) + suma_liste(vratiDrugeElemente l) ;;
+  
