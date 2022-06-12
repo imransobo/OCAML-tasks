@@ -1,0 +1,14 @@
+(* Napisati funkciju koja prihvata dvije uređene četvorke, 
+   te vraća novu četvorku koja na svakoj poziciji sadrži veći element iz ulaznih četvorki. 
+   Pri tome, posmatraju se odgovarajući elementi u svakoj četvorki. 
+   Npr. za četvorke (1, 3, 44, 5) i (2, 2, 3, 9), rezultat će biti (2, 3, 44, 9).
+*)
+
+
+let rec vratiVecuCetvorku (t1: int list) (t2: int list) = 
+  if t1 = [] then t2
+  else if t2 = [] then t1
+  else if List.hd t1 > List.hd t2 then List.hd t1 :: vratiVecuCetvorku (List.tl t1) (List.tl t2) 
+  else List.hd t2 :: vratiVecuCetvorku (List.tl t1) (List.tl t2);;
+  
+vratiVecuCetvorku [1;3;44;5] [2;2;3;9];;

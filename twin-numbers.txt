@@ -1,0 +1,20 @@
+(*  Neka je sa d(n) označen zbir svih prirodnih djelilaca broja n manjih od n. 
+    Ukoliko je d(a)=b i d(b)=a, kažemo da su brojevi blizanci. 
+    Npr. d(220)=1+2+4+5+10+11+20+22+44+55+110=284, te d(284)=1+2+4+71+142=220, pa su brojevi 220 i 284 blizanci. 
+    Napisati funkciju koja za dva proslijeđena broja provjerava da li su blizanci ili ne.*)
+
+let rec sumaDjelilaca n x =
+  if x = 1 then 1
+  else if (n mod x = 0) then
+    x + sumaDjelilaca n (x - 1)
+  else sumaDjelilaca n (x - 1);;
+
+let pomocna n =
+  sumaDjelilaca n (n - 1);;
+
+
+let zadatak x y = 
+  if (pomocna x = y && pomocna y = x) then print_string "Blizanci su!"
+  else print_string "Nisu blizanci!";;
+
+zadatak 220 284;;

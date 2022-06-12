@@ -1,0 +1,21 @@
+
+(* Napisati funkciju koja prihvata dva broja n i k. Vratiti k-ti faktor broja n, ukoliko takav broj postoji, ili vratiti
+   -1 ukoliko ne postoji. Za neki broj kažemo da je k-ti faktor, ukoliko je taj element na poziciji k u sortiranoj
+    listi faktora broja n, počevši od 1. Za broj 12, treći faktor je 3, dok je peti faktor 6, 
+   jer je lista faktora [1, 2, 3, 4, 6, 12].
+*) 
+
+let rec napraviListu k brojac = 
+  if brojac = 0 then [] 
+  else if (k mod brojac = 0) then brojac :: napraviListu k (brojac - 1)
+  else napraviListu k (brojac - 1);;
+
+
+let zadatak n k = 
+  let sortLista = (List.sort compare (napraviListu n n)) in
+  if (k-1  <= List.length sortLista - 1) then List.nth sortLista (k-1) 
+  else
+    -1;;
+
+
+zadatak 12 5;;

@@ -1,0 +1,11 @@
+
+let rec ukloni xs = 
+  match xs with 
+  | [] -> []
+  | x :: [] -> x :: []
+  | x :: y :: rest ->
+      if (x = y) then ukloni (y :: rest)
+      else x :: ukloni (y:: rest);;
+
+
+ukloni(List.sort compare [1;5;7;9;1;1]);;

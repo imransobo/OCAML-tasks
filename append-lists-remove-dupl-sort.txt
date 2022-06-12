@@ -1,0 +1,26 @@
+(* Napisati funkciju koja prihvata dvije liste, te vraća novu listu koja se dobije spajanjem originalnih listi.
+   Pri tome, nova lista je sortirana, te su ponavljanja brojeva uklonjena. *)
+
+
+let rec spojiListe xs ys = 
+  if xs = [] then ys 
+  else if ys = [] then xs
+  else (List.hd xs) :: spojiListe (List.tl xs) ys;;
+
+let rec obrisiDuplikate l = 
+  match l with
+  | [] -> []
+  | x :: [] -> x :: []
+  | x :: y :: rest ->
+      if x = y then obrisiDuplikate (y :: rest)
+      else x :: obrisiDuplikate (y :: rest);;
+
+
+
+let pom1 xs ys = 
+  spojiListe xs ys
+
+let pom xs ys = 
+  (obrisiDuplikate (List.sort compare (pom1 xs ys)));;
+
+pom [1;2;2;3;8] [16;2;3;4;7]

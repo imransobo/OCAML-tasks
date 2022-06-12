@@ -1,0 +1,22 @@
+(* funkcija koja racuna najveci uzastopni proizvod 3 broja u listi *)
+
+
+(*  uzastopni proizvod 3 broja *)
+let rec foo xs = 
+  match xs with
+  | [] -> []
+  | x :: y :: z :: rest ->
+      (x * y * z) :: foo (List.tl xs) 
+  | x :: y :: [] -> x :: y :: []
+  | _ :: [] ->  [];;
+
+
+(* revers-a listu i uzme hd tj. najveci element (proizvod) *)
+let sortiraj_obrni xs  = 
+  List.hd(List.rev(List.sort compare xs));;
+
+
+let zadatak xs = 
+  sortiraj_obrni( foo xs);;
+
+zadatak [1;4;3;5;2];;

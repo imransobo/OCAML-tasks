@@ -1,0 +1,17 @@
+(* Napisati funkciju koja prihvata broj n, te vraća niz sačinjen od prvih n prirodnih brojeva djeljivih sa 3 ili sa 5, 
+   ali ne i sa 3 i sa 5. Npr. broj 15 se ne može nalaziti u listi, dok se brojevi 9 ili 25 mogu nalaziti u listi.*)
+
+
+let rec pomocna n x brojac = 
+  if brojac = n then []
+  else if (x mod 3 = 0 || x mod 5 = 0) then
+    x :: pomocna n (x+1) (brojac + 1)
+  else pomocna n (x +1) brojac;;
+
+let pom2 n =
+  pomocna n 1 0;;
+
+
+pom2 10;;
+
+  

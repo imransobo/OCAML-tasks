@@ -1,0 +1,15 @@
+(* 
+Zadatak 3. Data su dva cijela broja a i b. Napisati funkciju koja pronalazi vrijednost
+zbira svih cijelih brojeva između manjeg i većeg od njih. Brojevi a i b nisu uključeni u sumu.
+*)
+
+
+let rec sumaIzmedju a b = 
+  if  a = b  then 0
+  else a + sumaIzmedju (a+1) b;;
+
+let pomocna a b = 
+  if a > b then (sumaIzmedju b a) - b
+  else (sumaIzmedju a b) - a;;
+  
+pomocna 1 5;;

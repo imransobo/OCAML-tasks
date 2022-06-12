@@ -1,0 +1,27 @@
+
+(* Cool broj je broj koji je djeljiv sa svakom svojom cifrom. Napisati funkciju koja provjerava da li je proslijeđeni
+   broj cool, te napisati drugu funkciju koja će za proslijeđeno n pronaći prvih n Cool brojeva. Npr. ukoliko bi se
+   drugoj funkciji proslijedio broj 13, funkcija bi vratila [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22].
+*)
+
+let rec jeLiCool coolBroj broj = 
+  if broj = 0 then true
+  else if (broj mod 10 = 0 || (coolBroj mod (broj mod 10)) <> 0) then false
+  else jeLiCool coolBroj (broj / 10);;
+
+
+let provjeri broj = 
+  let cool = jeLiCool broj broj in cool;;
+
+
+let rec napraviListu lista n brojNadjenih brojac = 
+  if (n = brojNadjenih) then lista
+  else if (provjeri brojac = true) then napraviListu (List.append lista [brojac]) n (brojNadjenih + 1) (brojac + 1)
+  else napraviListu lista n brojNadjenih (brojac + 1);;
+
+
+let zadatak broj = 
+  napraviListu [] broj 0 1;;
+
+
+zadatak 13;;
